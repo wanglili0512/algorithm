@@ -3,15 +3,29 @@ lst = [5, 7, 2, 4, 1, 8, 3, 9, 6]
 
 # 冒泡排序
 def bubble_sort(arg):
-    # 进行 len(arg)-1 轮
+    # 进行 len(arg)-1 轮，无序区在前，每次在无序区选择最大的往后挪
     for i in range(len(lst) - 1):
         # 每轮比较次数递减，且进行相邻两个数的比较
         for j in range(len(lst) - i - 1):
-            if lst[j] > lst[j + 1]:
+            if lst[j] > lst[j+1]:
                 lst[j], lst[j+1] = lst[j+1], lst[j]
     return lst
 
 
+# 选择排序
+def select_sort(arg):
+    # 进行 len(arg)-1 轮，无序区在后，每次在无序区选择最小的往前挪
+    for i in range(len(lst) - 1):
+        # 记录最小数的索引
+        min_index = i
+        for j in range(i+1, len(lst)):
+            if lst[min_index] > lst[j]:
+                min_index = j
+        if min_index != i:
+            lst[min_index], lst[i] = lst[i], lst[min_index]
+
+
 if __name__ == '__main__':
-    bubble_sort(lst)
+    # bubble_sort(lst)
+    select_sort(lst)
     print(lst)
