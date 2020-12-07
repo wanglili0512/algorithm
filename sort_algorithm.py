@@ -29,7 +29,22 @@ def select_sort(arg):
             lst[min_index], lst[i] = lst[i], lst[min_index]
 
 
+# 插入排序
+def insert_sort(arg):
+    # 进行 len(arg)-1 轮，无序区在后，依次把无序区的第一个插入有序区合适的位置
+    for i in range(1, len(lst)):
+        # 将摸到的牌暂时存起来
+        tmp = lst[i]
+        # j表示手里最大的牌
+        j = i - 1
+        while j >= 0 and lst[j] > tmp:
+            lst[j+1] = lst[j]
+            j = j - 1
+        lst[j+1] = tmp
+
+
 if __name__ == '__main__':
     # bubble_sort(lst)
-    select_sort(lst)
+    # select_sort(lst)
+    insert_sort(lst)
     print(lst)
