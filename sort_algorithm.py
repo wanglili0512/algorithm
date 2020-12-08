@@ -43,8 +43,20 @@ def insert_sort(arg):
         lst[j+1] = tmp
 
 
+# 快速排序
+def quick_sort(arg):
+    if len(arg) <= 1:
+        return arg
+    else:
+        tmp = arg[0]
+        left = [i for i in arg[1:] if i <= tmp]
+        right = [i for i in arg[1:] if i > tmp]
+        return quick_sort(left) + [tmp] + quick_sort(right)
+
+
 if __name__ == '__main__':
     # bubble_sort(lst)
     # select_sort(lst)
-    insert_sort(lst)
+    # insert_sort(lst)
     print(lst)
+    print(quick_sort(lst))
